@@ -1,5 +1,23 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/topology.xsd">
     <exchange name="mage.order" type="topic" connection="amqp">
         <binding id="MageOrderPlace" topic="mage.order.place" destinationType="queue" destination="mage_order_place"/>
+        <arguments>
+            <argument name="x-dead-letter-exchange" xsi:type="string">order.dead_letter</argument>
+        </arguments>
+    </exchange>
+    <exchange name="order.dead_letter" type="topic" connection="amqp">
+        <binding id="OrderDeadLetter" topic="#" destinationType="queue" destination="order_dead_letter">
+            <arguments>
+                <argument name="x-dead-letter-exchange" xsi:type="string">order.retry</argument>
+                <argument name="x-message-ttl" xsi:type="number">15000</argument>
+            </arguments>
+        </binding>
+    </exchange>
+    <exchange name="order.retry" type="topic" connection="amqp">
+        <binding id="CreateOrderRetry" topic="mage.order.place" destinationType="queue" destination="mage_order_place">
+            <arguments>
+                <argument name="x-dead-letter-exchange" xsi:type="string">order.dead_letter</argument>
+            </arguments>
+        </binding>
     </exchange>
 </config>
