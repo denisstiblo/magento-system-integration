@@ -1,0 +1,4 @@
+<config>
+    <preference for="Mage\MagentoSystemIntegration\Synch\Sale\DataTransferInterface" type="Mage\MagentoSystemIntegration\Synch\Sale\DataTransfer" />
+    <preference for="Magento\Framework\MessageQueue\ConsumerConfigurationInterface" type="Magento\Framework\MessageQueue\ConsumerConfiguration" />
+</config>

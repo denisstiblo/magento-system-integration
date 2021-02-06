@@ -1,0 +1,3 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/consumer.xsd">
+    <consumer name="MageOrderPlace" queue="mage_order_place" handler="Mage\MagentoSystemIntegration\Synch\Sale\OrderConsumer::processMessage" consumerInstance="Magento\Framework\MessageQueue\Consumer" connection="amqp"/>
+</config>
