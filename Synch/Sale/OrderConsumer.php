@@ -4,7 +4,7 @@ namespace Mage\MagentoSystemIntegration\Synch\Sale;
 use \Exception;
 use Mage\MagentoSystemIntegration\Synch\Sale\DataTransfer;
 
-class OrderConsumer implements ConsumerInterface
+class OrderConsumer
 {
     public function __construct()
     {
